@@ -113,11 +113,24 @@ try:
                 with st.container(border=True):
                     col_img, col_txt = st.columns([1, 2])
                     with col_img:
-                        # ⚠️ [수정됨] GAS에서 이미 가공된 URL을 주므로 파이썬에서 자를 필요 없음!
+                        # ⚠️ [수정됨] 구글 드라이브 보안 정책 대응: 썸네일 API 주소로 변환하여 표시
                         # .get()을 사용하여 키가 없더라도 에러가 나지 않고 빈 문자열을 반환하도록 처리
-                        img_url = post.get('image_url', '')
-                        if img_url:
-                            st.image(img_url, use_container_width=True)
+                        raw_img_url = post.get('image_url', '')
+                        
+                        # 주소에서 파일 고유 ID만 추출하여 안전한 썸네일 주소로 조립합니다.
+                        if raw_img_url and 'id=' in raw_img_url:
+                            try:
+                                # 주소에서 'id=' 뒷부분(파일 고유 ID)만 추출
+                                file_id = raw_img_url.split('id=')[1]
+                                # 외부 웹사이트에서도 잘 보이는 구글 썸네일 전용 주소로 재조립 (sz=w800은 화질/크기)
+                                safe_img_url = f"https://drive.google.com/thumbnail?id={file_id}&sz=w800"
+                                st.image(safe_img_url, use_container_width=True)
+                            except Exception as e:
+                                # 추출 실패 시 원본 시도 (깨질 확률 높음)
+                                st.image(raw_img_url, use_container_width=True)
+                        elif raw_img_url:
+                             # id= 가 없는 경우 그냥 원본 표시
+                             st.image(raw_img_url, use_container_width=True)
                         else:
                             st.info("📷 이미지 없음")
                     
