@@ -10,7 +10,7 @@ st.title("🍱 AI와 함께하는 '잔반 다이어트'")
 st.write("식판을 촬영해 AI 분석을 받고, 오늘 나의 성찰일지를 친구들과 공유해 보세요.")
 
 # ⚠️ 여기에 1단계에서 복사한 구글 앱스스크립트(GAS) 웹 앱 URL을 넣으세요!
-GAS_URL = "https://script.googleusercontent.com/macros/echo?user_content_key=AUkAhnS8vxx5mbCoA_3291r5HV8xk0HzToDwCR4EVwgmWDfP_DboWmwjKTZtgJEf8DSP0nnM9Gth0_k1u-ARC5HXv87wYzf2taI7Cfw9TOy_iFPoRebnsIBcUeOGv7xy9fvQVUnX_XUxobTYsNKIitMALRLpi-umQg8zFJojiBNXEgCNS3f9JAlFq5ZxANLLmlWvSs7WhDaeu71EdyohJ4bgSmZQSSY3Za9HZC3oi4dVfWzyujKypbfi8mQunyakqoyJ9zValnJsVo-bahNLA6F_U9C0_vmTcQ&lib=MiJjpqqwqNtvVW1LOo685fAMetOoHZ3H2"
+GAS_URL = "https://script.google.com/macros/s/AKfycbzDnhs70HmEfX4Jalc-oDln6Q3n5M6xPf_1QwdvKGaspHv9zyoMpV6lcQPiI9Cm-CA7Uw/exec"
 
 api_key = st.text_input("🔑 교사용 Gemini API 키를 입력하세요", type="password")
 
