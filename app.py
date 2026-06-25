@@ -10,7 +10,7 @@ st.title("🍱 AI와 함께하는 '잔반 다이어트'")
 st.write("식판을 촬영해 AI 분석을 받고, 오늘 나의 성찰일지를 친구들과 공유해 보세요.")
 
 # ⚠️ 여기에 1단계에서 복사한 구글 앱스스크립트(GAS) 웹 앱 URL을 넣으세요!
-GAS_URL = "https://script.googleusercontent.com/macros/echo?user_content_key=AUkAhnS9oC7GUyZ5Rzax5dJfk6gHbdtZJ_w9xZYcqZY3_98_abnLDvbNGMYmovpLjFQ8Eg0RDG74MhgZ85maJa4NNiAG_PY6Gv2Xt2fQcsPs3whz-d39Uu836MTUL8huy5O6yMS2f-bHxAKlPh_A97WFZOI-5SM3DOYWdpXvV1fshbhV5V6Jzk1ffwrWEVj7n6W_Wl2iBu0pZxkZ1lSlswms5481C4_DIcnWVIbzDUvVc9e1hu-tS2igvET4dnnjzdULPxoVAYvP39IwpOD1yNgObTJEgpiN7g&lib=MiJjpqqwqNtvVW1LOo685fAMetOoHZ3H2"
+GAS_URL = "https://script.googleusercontent.com/macros/echo?user_content_key=AUkAhnS8vxx5mbCoA_3291r5HV8xk0HzToDwCR4EVwgmWDfP_DboWmwjKTZtgJEf8DSP0nnM9Gth0_k1u-ARC5HXv87wYzf2taI7Cfw9TOy_iFPoRebnsIBcUeOGv7xy9fvQVUnX_XUxobTYsNKIitMALRLpi-umQg8zFJojiBNXEgCNS3f9JAlFq5ZxANLLmlWvSs7WhDaeu71EdyohJ4bgSmZQSSY3Za9HZC3oi4dVfWzyujKypbfi8mQunyakqoyJ9zValnJsVo-bahNLA6F_U9C0_vmTcQ&lib=MiJjpqqwqNtvVW1LOo685fAMetOoHZ3H2"
 
 api_key = st.text_input("🔑 교사용 Gemini API 키를 입력하세요", type="password")
 
@@ -49,7 +49,7 @@ if api_key and GAS_URL != "여기에_구글_앱스스크립트_웹앱_주소_URL
                 답변 양식은 아래 서식을 무조건 지켜서 작성해 줘:
                 ### 📊 AI 분석 결과
                 - **잔반율**: 내용
-                - **가장 많이 남은 음식**: 내용
+                - **주요 잔**: 내용
                 - **환경 영향도**: 내용
                 
                 ### 🌍 지구의 한마디
