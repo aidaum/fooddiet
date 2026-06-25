@@ -18,14 +18,14 @@ api_key = st.text_input("🔑 교사용 Gemini API 키를 입력하세요", type
 if 'ai_result' not in st.session_state:
     st.session_state.ai_result = ""
 
-if api_key and GAS_URL != "여기에_구글_앱스스크립트_웹앱_주소_URL을_넣으세요":
+if api_key and GAS_URL != "https://script.googleusercontent.com/macros/echo?user_content_key=AUkAhnS8vxx5mbCoA_3291r5HV8xk0HzToDwCR4EVwgmWDfP_DboWmwjKTZtgJEf8DSP0nnM9Gth0_k1u-ARC5HXv87wYzf2taI7Cfw9TOy_iFPoRebnsIBcUeOGv7xy9fvQVUnX_XUxobTYsNKIitMALRLpi-umQg8zFJojiBNXEgCNS3f9JAlFq5ZxANLLmlWvSs7WhDaeu71EdyohJ4bgSmZQSSY3Za9HZC3oi4dVfWzyujKypbfi8mQunyakqoyJ9zValnJsVo-bahNLA6F_U9C0_vmTcQ&lib=MiJjpqqwqNtvVW1LOo685fAMetOoHZ3H2":
     genai.configure(api_key=api_key)
     model = genai.GenerativeModel('gemini-3.1-flash-lite')
     
     st.subheader("👤 학생 정보 입력")
     col1, col2 = st.columns(2)
     with col1:
-        student_num = st.text_input("학번을 입력하세요 (예: 60101)", max_chars=5)
+        student_num = st.text_input("학번을 입력하세요 (예: 6101)", max_chars=4)
     with col2:
         student_name = st.text_input("이름을 입력하세요")
 
@@ -41,15 +41,15 @@ if api_key and GAS_URL != "여기에_구글_앱스스크립트_웹앱_주소_URL
                 너는 초등학교 급식 잔반 분석 전문가이자 친절한 환경 과학자야. 
                 제공된 식판 사진을 보고 다음 4가지 항목에 대해 초등학생이 이해하기 쉽게 다정하고 명확한 말투로 답변해 줘.
                 
-                1. [잔반율]: 식판 전체 면적 대비 남은 음식의 양을 대략적인 백분율(%)로 알려줘. (예: 약 30% 남음, 다 먹었다면 0%)
-                2. [주요 잔반]: 가장 많이 남은 음식 종류가 무엇인지 알려줘. (밥/국물/고기반찬/채소반찬 중 선택)
+                1. [잔반율]: 식판 전체 면적 대비 남은 음식의 양(남은 음식의 종류 개수도 참고)을 대략적인 백분율(%)로 알려줘. (예: 약 30% 남음, 다 먹었다면 0%)
+                2. [주요 잔반]: 가장 많이 남은 음식 종류가 무엇인지 알려줘. (밥/국물/고기반찬/채소반찬/과일/디저트 등 1~2가지 선택)
                 3. [환경 영향도]: 이 잔반이 유발하는 탄소 배출량의 수준을 상/중/하로 나누고, 이로 인해 지구가 받는 영향을 초등학생 눈높이에서 설명해 줘.
                 4. [지구의 한마디]: 음식을 다 먹었다면 아낌없는 칭찬을, 남겼다면 다음 식사 때 실천할 수 있는 구체적인 행동 1가지를 다정하게 제안해 줘.
                
                 답변 양식은 아래 서식을 무조건 지켜서 작성해 줘:
                 ### 📊 AI 분석 결과
                 - **잔반율**: 내용
-                - **주요 잔**: 내용
+                - **주요 잔반**: 내용
                 - **환경 영향도**: 내용
                 
                 ### 🌍 지구의 한마디
