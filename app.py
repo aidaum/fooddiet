@@ -20,7 +20,7 @@ if 'ai_result' not in st.session_state:
 
 if api_key and GAS_URL != "여기에_구글_앱스스크립트_웹앱_주소_URL을_넣으세요":
     genai.configure(api_key=api_key)
-    model = genai.GenerativeModel('gemini-1.5-flash')
+    model = genai.GenerativeModel('gemini-3.1-flash-lite')
     
     st.subheader("👤 학생 정보 입력")
     col1, col2 = st.columns(2)
