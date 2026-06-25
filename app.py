@@ -100,10 +100,6 @@ else:
 st.divider()
 st.header("👥 우리 반 실시간 성찰 게시판")
 
-# --- 👥 실시간 우리 반 성찰 게시판 표시 영역 ---
-st.divider()
-st.header("👥 우리 반 실시간 성찰 게시판")
-
 try:
     # 구글 서버에서 실시간 데이터 읽어오기 (GET 요청)
     response = requests.get(GAS_URL)
