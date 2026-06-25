@@ -12,7 +12,12 @@ st.write("식판을 촬영해 AI 분석을 받고, 오늘 나의 성찰일지를
 # ⚠️ 여기에 1단계에서 복사한 구글 앱스스크립트(GAS) 웹 앱 URL을 넣으세요!
 GAS_URL = "https://script.google.com/macros/s/AKfycbzDnhs70HmEfX4Jalc-oDln6Q3n5M6xPf_1QwdvKGaspHv9zyoMpV6lcQPiI9Cm-CA7Uw/exec"
 
-api_key = st.text_input("🔑 교사용 Gemini API 키를 입력하세요", type="password")
+# 스트림릿 비밀 금고에서 API 키를 자동으로 불러옵니다.
+try:
+    api_key = st.secrets["GEMINI_API_KEY"]
+except KeyError:
+    st.error("API 키가 스트림릿 Secrets에 설정되지 않았습니다.")
+    api_key = ""
 
 # 새로고침 시 AI 결과가 날아가지 않도록 세션 상태 보존 설정
 if 'ai_result' not in st.session_state:
