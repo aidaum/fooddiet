@@ -111,10 +111,8 @@ try:
                 with st.container(border=True):
                     col_img, col_txt = st.columns([1, 2])
                     with col_img:
-                        # 구글 드라이브 주소를 웹에 표시 가능한 이미지 주소로 가공
-                        file_id = post['image_url'].split('/d/')[1].split('/')[0]
-                        direct_img_url = f"https://docs.google.com/uc?export=view&id={file_id}"
-                        st.image(direct_img_url, use_container_width=True)
+                        # GAS에서 이미 다이렉트 주소를 보내주므로 바로 출력합니다.
+                        st.image(post['image_url'], use_container_width=True)
                     with col_txt:
                         st.subheader(f"{post['num']} {post['name']}")
                         st.write(f"**✍️ 나의 성찰:** {post['reflection']}")
