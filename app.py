@@ -18,7 +18,7 @@ api_key = st.text_input("🔑 교사용 Gemini API 키를 입력하세요", type
 if 'ai_result' not in st.session_state:
     st.session_state.ai_result = ""
 
-if api_key and GAS_URL != "https://script.googleusercontent.com/macros/echo?user_content_key=AUkAhnS8vxx5mbCoA_3291r5HV8xk0HzToDwCR4EVwgmWDfP_DboWmwjKTZtgJEf8DSP0nnM9Gth0_k1u-ARC5HXv87wYzf2taI7Cfw9TOy_iFPoRebnsIBcUeOGv7xy9fvQVUnX_XUxobTYsNKIitMALRLpi-umQg8zFJojiBNXEgCNS3f9JAlFq5ZxANLLmlWvSs7WhDaeu71EdyohJ4bgSmZQSSY3Za9HZC3oi4dVfWzyujKypbfi8mQunyakqoyJ9zValnJsVo-bahNLA6F_U9C0_vmTcQ&lib=MiJjpqqwqNtvVW1LOo685fAMetOoHZ3H2":
+if api_key and GAS_URL != "":
     genai.configure(api_key=api_key)
     model = genai.GenerativeModel('gemini-3.1-flash-lite')
     
