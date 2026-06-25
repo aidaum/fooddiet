@@ -100,25 +100,38 @@ else:
 st.divider()
 st.header("👥 우리 반 실시간 성찰 게시판")
 
+# --- 👥 실시간 우리 반 성찰 게시판 표시 영역 ---
+st.divider()
+st.header("👥 우리 반 실시간 성찰 게시판")
+
 try:
     # 구글 서버에서 실시간 데이터 읽어오기 (GET 요청)
     response = requests.get(GAS_URL)
     if response.status_code == 200:
         posts = response.json()
-        if posts:
+        
+        # 데이터가 정상적인 리스트(배열) 형태인지, 그리고 비어있지 않은지 확인
+        if isinstance(posts, list) and len(posts) > 0:
             # 최신글이 맨 위로 오도록 배열을 뒤집어서(reversed) 보여줌
             for post in reversed(posts):
                 with st.container(border=True):
                     col_img, col_txt = st.columns([1, 2])
                     with col_img:
-                        # GAS에서 이미 다이렉트 주소를 보내주므로 바로 출력합니다.
-                        st.image(post['image_url'], use_container_width=True)
+                        # ⚠️ [수정됨] GAS에서 이미 가공된 URL을 주므로 파이썬에서 자를 필요 없음!
+                        # .get()을 사용하여 키가 없더라도 에러가 나지 않고 빈 문자열을 반환하도록 처리
+                        img_url = post.get('image_url', '')
+                        if img_url:
+                            st.image(img_url, use_container_width=True)
+                        else:
+                            st.info("📷 이미지 없음")
+                    
                     with col_txt:
-                        st.subheader(f"{post['num']} {post['name']}")
-                        st.write(f"**✍️ 나의 성찰:** {post['reflection']}")
+                        st.subheader(f"{post.get('num', '')} {post.get('name', '')}")
+                        st.write(f"**✍️ 나의 성찰:** {post.get('reflection', '')}")
                         with st.expander("🤖 AI 피드백 다시보기"):
-                            st.markdown(post['feedback'])
+                            st.markdown(post.get('feedback', ''))
         else:
             st.info("아직 등록된 성찰일지가 없습니다. 첫 번째 주인공이 되어보세요!")
+            
 except Exception as e:
-    st.write("게시판 데이터를 불러오는 중입니다...")
+    st.error(f"게시판 데이터를 불러오는 중 문제가 발생했습니다. 잠시 후 다시 시도해주세요. (에러: {e})")
